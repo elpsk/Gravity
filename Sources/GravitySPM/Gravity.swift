@@ -6,7 +6,7 @@
 import UIKit
 import CoreMotion
 
-public class Gravity {
+public class Gravity: NSObject {
 
     private var animator: UIDynamicAnimator!
     private var gravity: UIGravityBehavior!
@@ -55,6 +55,12 @@ public class Gravity {
     public func disable() {
         animator.removeAllBehaviors()
         motion.stopDeviceMotionUpdates()
+    }
+    
+    /// Restart motion and behaviors
+    public func restart() {
+        disable()
+        enable()
     }
 
     private func collisionBehavior() -> UICollisionBehavior {
